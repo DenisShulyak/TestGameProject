@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -46,18 +49,16 @@ public class Player : Entity
     /// <summary>
     /// Кол-во патронов.
     /// </summary>
-    private int countBullets = 99;
-
-    /// <summary>
-    /// Предметы.
-    /// </summary>
-    private List<GameObject> items = new List<GameObject>();
-
+    private int countBullets = 10;
 
     [Header("Inventory Settings")]
-    public Image bag; // Основное изображение инвентаря
-    public List<Image> inventorySlots = new List<Image>(); // Список ячеек инвентаря
-    private bool isBagOpen = false; // Флаг состояния инвентаря
+    public Image bag; // Основное изображение инвентаря.
+    public List<Image> inventorySlots = new List<Image>(); // Список ячеек инвентаря.
+    public List<TMP_Text> inventorySlotsTexts = new List<TMP_Text>(); // Список ячеек инвентаря.
+    public List<Button> inventorySlotsDeleteButtons = new List<Button>(); // Список кнопок удаления.
+    public List<Button> inventorySlotsUseButtons = new List<Button>();
+    private List<SlotInventory> slots = new List<SlotInventory>();
+    private bool isBagOpen = false; // Флаг состояния инвентаря.
 
     protected override void Start()
     {
@@ -65,6 +66,26 @@ public class Player : Entity
 
         textCountBullets.text = "x" + countBullets;
         SetBagVisibility(isBagOpen);
+
+        // Инициализация слотов инвентаря.
+        if (inventorySlots.Count == inventorySlotsTexts.Count && inventorySlotsDeleteButtons.Count == inventorySlots.Count)
+        {
+            for (int i = 0; i < inventorySlots.Count; i++)
+            {
+                slots.Add(new SlotInventory
+                {
+                    Image = inventorySlots[i],
+                    CountSlot = inventorySlotsTexts[i],
+                    DeleteButton = inventorySlotsDeleteButtons[i],
+                    UseButton = inventorySlotsUseButtons[i],
+                });
+                slots[i].DeleteButton.gameObject.SetActive(false);
+                int index = i;
+                slots[i].DeleteButton.onClick.AddListener(() => DeleteItem(slots[index]));
+
+                slots[i].UseButton.onClick.AddListener(() => UseItem(slots[index]));
+            }
+        }
 
         // Подписываемся на событие нажатия кнопки
         shootButton.onClick.AddListener(ShootNearestEnemy);
@@ -93,29 +114,91 @@ public class Player : Entity
     }
 
     /// <summary>
+    /// Удаление предмета.
+    /// </summary>
+    /// <param name="slot"></param>
+    private void DeleteItem(SlotInventory slot)
+    {
+        if(slot.Item.Count > 1)
+        {
+            slot.Item.Count--;
+        }
+        else
+        {
+            // Если предметы кончились, подчищаем слот.
+            slot.Item = null;
+            slot.DeleteButton.gameObject.SetActive(false);
+            slot.CountSlot.text = string.Empty;
+        }
+
+        UpdateInventoryUI();
+    }
+
+    /// <summary>
+    /// Использование предмета.
+    /// </summary>
+    /// <param name="slot"></param>
+    private void UseItem(SlotInventory slot)
+    {
+        if(slot.Item != null)
+        {
+            var name = slot.Item.Name;
+            if(name == "Bullets")
+            {
+                countBullets += 10;
+                textCountBullets.text = "x" + countBullets;
+            }
+            else if(name == "BulletproofCloak")
+            {
+                currentHealth += 30;
+                UpdateHealthBar();
+            }
+            else if (name == "MilitaryHelmet")
+            {
+                currentHealth += 20;
+                UpdateHealthBar();
+            }
+            else if(name == "SovietBag")
+            {
+                moveSpeed++;
+            }
+
+            if(currentHealth > MaxHealth)
+            {
+                currentHealth = MaxHealth;
+            }
+
+            DeleteItem(slot);
+        }
+    }
+
+    /// <summary>
     /// Обновляет отображение предметов в инвентаре
     /// </summary>
     private void UpdateInventoryUI()
     {
         // Сначала очищаем все ячейки
-        foreach (var slot in inventorySlots)
+        foreach (var slot in slots)
         {
-            slot.sprite = null;
-            slot.color = new Color(1, 1, 1, 0.2f); // Полупрозрачный, если пусто
+            slot.Image.sprite = null;
+            slot.Image.color = new Color(1, 1, 1, 0.2f); // Полупрозрачный, если пусто
         }
 
-        // Заполняем ячейки собранными предметами
-        for (int i = 0; i < items.Count && i < inventorySlots.Count; i++)
+        foreach(var slot in slots)
         {
-            var itemSprite = items[i].GetComponent<SpriteRenderer>()?.sprite;
-            if (itemSprite != null)
+            if(slot.Item != null)
             {
-                inventorySlots[i].sprite = itemSprite;
-                inventorySlots[i].color = Color.white;
+                var itemSprite = slot.Item.GameObject.GetComponent<SpriteRenderer>()?.sprite;
+                if (itemSprite != null)
+                {
+                    slot.Image.sprite = itemSprite;
+                    slot.Image.color = Color.white;
+                    slot.CountSlot.text = "x" + slot.Item.Count;
+                }
             }
         }
 
-        textCountItems.text = "x" + items.Count;
+        textCountItems.text = "x" + slots.Where(x => x.Item != null).Count();
     }
 
     /// <summary>
@@ -178,15 +261,31 @@ public class Player : Entity
         if (other.CompareTag("Item"))
         {
             // Добавляем предмет в список
-            items.Add(other.gameObject);
+
+            var item = other.gameObject;
+
+            var slot = slots.Where(x => x.Item != null).FirstOrDefault(x => item.name.Contains(x.Item.Name));
+
+            if(slot == null)
+            {
+                slot = slots.Where(x => x.Item == null).First();
+                slot.Item = new ItemInventory
+                {
+                    GameObject = item,
+                    Name = item.name.Replace("(Clone)", "").Trim(),
+                    Count = 1,
+                };
+                slot.DeleteButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                slot.Item.Count++;
+            }
 
             // Отключаем предмет (можно заменить на Destroy)
-            other.gameObject.SetActive(false);
+            item.SetActive(false);
 
-            // Или полностью удаляем со сцены:
-            // Destroy(other.gameObject);
-            textCountItems.text = "x" + items.Count;
-            Debug.Log($"Item collected! Total items: {items.Count}");
+            UpdateInventoryUI();
         }
     }
 
@@ -195,5 +294,13 @@ public class Player : Entity
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, searchRadius);
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        Debug.Log("Player is died!");
+        // Перезапуск сцены для начала новой игры.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

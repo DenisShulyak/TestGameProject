@@ -7,6 +7,10 @@ TagManager:
   - CountBullets
   - Item
   - Bag
+  - Slot1
+  - Slot2
+  - Slot3
+  - Slot4
   layers:
   - Default
   - TransparentFX
