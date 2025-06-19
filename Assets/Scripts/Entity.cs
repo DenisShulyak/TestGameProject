@@ -41,9 +41,29 @@ public abstract class Entity : MonoBehaviour
     /// </summary>
     public Image Fill;
 
+    /// <summary>
+    /// Звук атаки.
+    /// </summary>
+    public AudioClip clipDamage;
+
+    /// <summary>
+    /// Проигрыватель.
+    /// </summary>
+    protected AudioSource sharedAudioSource;
+
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (sharedAudioSource == null)
+        {
+            sharedAudioSource = FindObjectOfType<AudioSource>();
+            if (sharedAudioSource == null)
+            {
+                GameObject audioObj = new GameObject("UI_AudioSource");
+                sharedAudioSource = audioObj.AddComponent<AudioSource>();
+            }
+        }
     }
 
     void Update()

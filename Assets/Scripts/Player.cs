@@ -243,6 +243,7 @@ public class Player : Entity
 
             if (nearestEnemy != null)
             {
+                sharedAudioSource.PlayOneShot(clipDamage);
                 nearestEnemy.TakeDamage(shootDamage);
                 countBullets--;
                 textCountBullets.text = "x" + countBullets;

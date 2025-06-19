@@ -101,6 +101,7 @@ MonoBehaviour:
   MaxHealth: 100
   Background: {fileID: 4989119084007009051}
   Fill: {fileID: 4989119085646515380}
+  clipDamage: {fileID: 8300000, guid: 6bc36447355ca8d499b495800744c4c1, type: 3}
   detectionRange: 10
   damageAmount: 10
   damageCooldown: 1

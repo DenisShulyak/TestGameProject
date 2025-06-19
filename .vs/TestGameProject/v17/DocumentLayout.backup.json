@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|c:\\users\\denis\\riderprojects\\testgameproject\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|c:\\users\\denis\\riderprojects\\testgameproject\\assets\\scripts\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|C:\\Users\\denis\\RiderProjects\\TestGameProject\\assets\\scripts\\models\\iteminventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\models\\iteminventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|C:\\Users\\denis\\RiderProjects\\TestGameProject\\assets\\scripts\\models\\slotinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\models\\slotinventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|C:\\Users\\denis\\RiderProjects\\TestGameProject\\assets\\scripts\\models\\iteminventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\models\\iteminventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|c:\\users\\denis\\riderprojects\\testgameproject\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|c:\\users\\denis\\riderprojects\\testgameproject\\assets\\scripts\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C24B86D-3022-6214-C7C3-46809E39F4A8}|Assembly-CSharp.csproj|c:\\users\\denis\\riderprojects\\testgameproject\\assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,6 +34,20 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAswDIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:35:13.59Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Enemy.cs",
@@ -47,54 +61,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Entity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Entity.cs",
               "ToolTip": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Entity.cs",
               "RelativeToolTip": "Assets\\Scripts\\Entity.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAE0AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T18:09:42.792Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SlotInventory.cs",
               "DocumentMoniker": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Models\\SlotInventory.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Models\\SlotInventory.cs",
               "ToolTip": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Models\\SlotInventory.cs",
               "RelativeToolTip": "Assets\\Scripts\\Models\\SlotInventory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T17:16:42.246Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ItemInventory.cs",
               "DocumentMoniker": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Models\\ItemInventory.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Models\\ItemInventory.cs",
               "ToolTip": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Models\\ItemInventory.cs",
               "RelativeToolTip": "Assets\\Scripts\\Models\\ItemInventory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T16:58:49.672Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Player.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
-              "ToolTip": "C:\\Users\\denis\\RiderProjects\\TestGameProject\\Assets\\Scripts\\Player.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
-              "ViewState": "AgIAAM4AAAAAAAAAAAAgwOgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T16:35:13.59Z",
               "EditorCaption": ""
             }
           ]

@@ -112,6 +112,7 @@ public class Enemy : Entity
                 if (player != null)
                 {
                     player.TakeDamage(damageAmount);
+                    sharedAudioSource.PlayOneShot(clipDamage);
                     lastDamageTime = Time.time;
                 }
             }
